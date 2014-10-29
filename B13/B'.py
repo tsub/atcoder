@@ -1,2 +1,2 @@
-l = [int(raw_input()), int(raw_input())]
-print 10 - max(l) + min(l) if max(l) - min(l) >= 5 else max(l) - min(l)
+diff = abs(int(raw_input()) - int(raw_input()))
+print 10 - diff if diff >= 5 else diff
