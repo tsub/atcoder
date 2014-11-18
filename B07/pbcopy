@@ -1,3 +1,4 @@
+# 入力
 R, C = map(int, input().split())
 sy, sx = map(int, input().split())
 gy, gx = map(int, input().split())
@@ -5,14 +6,17 @@ data = []
 for i in range(R):
     data.append(input())
 
+# '.'がある座標を抽出
 node_map = []
 for i in range(len(data)):
     for j in range(len(data[i])):
         if data[i][j] == '.':
             node_map.append([i, j])
 
+# 他のノードに行くことができるかどうかのリスト生成
 map_lst = [[False for j in range(len(node_map))] for i in range(len(node_map))]
 
+# 各ノードが行くことのできるノードをTrueにする
 for i in range(len(node_map)):
     if [node_map[i][0], node_map[i][1]+1] in node_map:
         map_lst[i][node_map.index([node_map[i][0], node_map[i][1]+1])] = True
