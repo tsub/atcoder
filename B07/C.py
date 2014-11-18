@@ -5,30 +5,22 @@ data = []
 for i in range(R):
     data.append(input())
 
-node_map = []
-for i in range(len(data)):
-    for j in range(len(data[i])):
-        if data[i][j] == '.':
-            node_map.append([i, j])
+node_map = [[i, j] for i in range(len(data)) for j in range(len(data[i])) if data[i][j] == '.']
 
 map_lst = [[False for j in range(len(node_map))] for i in range(len(node_map))]
 
 for i in range(len(node_map)):
-    if [node_map[i][0], node_map[i][1]+1] in node_map:
-        map_lst[i][node_map.index([node_map[i][0], node_map[i][1]+1])] = True
+    x, y = node_map[i][0], node_map[i][1]
+    for xy in [[x, y+1], [x+1, y], [x-1, y], [x, y-1]]:
+        if xy in node_map:
+            map_lst[i][node_map.index(xy)] = True
 
-    if [node_map[i][0]+1, node_map[i][1]] in node_map:
-        map_lst[i][node_map.index([node_map[i][0]+1, node_map[i][1]])] = True
-
-    if [node_map[i][0]-1, node_map[i][1]] in node_map:
-        map_lst[i][node_map.index([node_map[i][0]-1, node_map[i][1]])] = True
-
-    if [node_map[i][0], node_map[i][1]-1] in node_map:
-        map_lst[i][node_map.index([node_map[i][0], node_map[i][1]-1])] = True
+START = node_map.index([sx-1, sy-1])
+GOAL = node_map.index([gy-1, gx-1])
 
 from queue import Queue
 q = Queue()
-q.put([node_map.index([sx-1, sy-1]), 0])
+q.put([START, 0])
 checked = []
 while not q.empty():
     current_state, current_depth = q.get()
@@ -36,7 +28,7 @@ while not q.empty():
     if current_state in checked:
         continue
 
-    if current_state == node_map.index([gy-1, gx-1]):
+    if current_state == GOAL:
         print(current_depth)
         break
 
