@@ -1,9 +1,7 @@
 R, C = map(int, input().split())
 sy, sx = map(int, input().split())
 gy, gx = map(int, input().split())
-data = []
-for i in range(R):
-    data.append(input())
+data = [input() for i in range(R)]
 
 node_map = [[i, j] for i in range(len(data)) for j in range(len(data[i])) if data[i][j] == '.']
 
