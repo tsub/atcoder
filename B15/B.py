@@ -1,8 +1,6 @@
 import math
 
 N = int(input())
-A = map(int, input().split())
+A = [int(a) for a in input().split() if a != '0']
 
-an = [an for an in A if an > 0]
-
-print(math.ceil(sum(an) / len(an)))
+print(math.ceil(sum(A) / len(A)))
