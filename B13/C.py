@@ -11,25 +11,25 @@ D = int(D)
 E = int(E)
 
 while N > 0:
-  if H > E:
-    H -= E
+    if H > E:
+        H -= E
 
-  elif N == 1:
-    H += D
-    expences += C
+    elif N == 1:
+        H += D
+        expences += C
 
-  elif D + H > E:
-    H += D
-    expences += C
+    elif D + H > E:
+        H += D
+        expences += C
 
-  elif B + H > E:
-    H += B
-    expences += A
+    elif B + H > E:
+        H += B
+        expences += A
 
-  else:
-    H += D
-    expences += C
+    else:
+        H += D
+        expences += C
 
-  N -= 1
+    N -= 1
 
 print expences

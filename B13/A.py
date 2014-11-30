@@ -4,4 +4,4 @@ input = raw_input()
 
 for i in range(len(alphabets)):
     if alphabets[i] == input:
-        print i+1
+        print i + 1
